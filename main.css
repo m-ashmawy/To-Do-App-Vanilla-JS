@@ -1,0 +1,315 @@
+:root {
+  --clr-primary: #3670c7;
+  --clr-light: #f4f4f4;
+  --clr-dark: #333;
+  --clr-warning: #632424;
+}
+body {
+  font-family: "Nunito", sans-serif;
+  background: var(--clr-primary);
+  min-height: 100vh;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+.title {
+  margin: auto;
+  width: fit-content;
+  font-size: 10vw;
+  color: rgb(0 0 0 / 15%);
+  font-weight: 900;
+  user-select: none;
+}
+.tasks-content {
+  margin: 40px auto;
+  padding: 0 40px;
+  max-width: 1000px;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+.all-lists {
+  flex-basis: 200px;
+  flex-grow: 0.2;
+  max-width: 400px;
+  padding: 10px;
+  color: var(--clr-light);
+}
+.all-lists .menu-icon {
+  display: none;
+}
+.lists-title {
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+.lists {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.lists li {
+  list-style-type: circle;
+  list-style-position: inside;
+  transition: all 300ms;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 300;
+  text-transform: capitalize;
+  line-height: 1.2;
+}
+.lists li:hover,
+.lists li.active {
+  font-weight: 700;
+  background: var(--clr-light);
+  color: var(--clr-dark);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+form {
+  display: flex;
+  gap: 5px;
+}
+.btn {
+  background: transparent;
+  outline: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+}
+.btn:hover {
+  opacity: 0.6;
+}
+.btn.create {
+  font-weight: 900;
+  font-size: 1em;
+}
+form .new {
+  flex: 1;
+  background: none;
+  border: 1px solid;
+  border-color: transparent;
+  border-bottom-color: inherit;
+  padding: 5px;
+  color: inherit;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+form .new::placeholder {
+  color: inherit;
+  opacity: 0.6;
+}
+form .new:focus {
+  border-color: inherit;
+}
+form .new:focus::placeholder {
+  opacity: 0.3;
+}
+form .list::-moz-selection {
+  color: var(--clr-dark);
+  background: var(--clr-light);
+}
+form .list::selection {
+  color: var(--clr-dark);
+  background: var(--clr-light);
+}
+form .task::-moz-selection {
+  color: var(--clr-light);
+  background: var(--clr-dark);
+}
+
+form .task::selection {
+  color: var(--clr-light);
+  background: var(--clr-dark);
+}
+form .list {
+}
+form .task {
+}
+@media (max-width: 767px) {
+  .all-lists {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    border: 2px solid var(--clr-light);
+    height: 100%;
+    background-color: var(--clr-primary);
+    transform: translateX(-101%);
+    transition: all 500ms;
+  }
+  .all-lists.active {
+    transform: translateX(0);
+  }
+  .lists {
+    margin: 20px 0;
+    gap: 15px;
+  }
+  .all-lists .menu-icon {
+    display: block;
+    position: absolute;
+    top: 20px;
+    width: 20px;
+    filter: invert();
+    -webkit-filter: invert();
+    cursor: pointer;
+    opacity: 0.8;
+    transition: all 400ms 200ms;
+    -webkit-transition: all 400ms 200ms;
+    -moz-transition: all 400ms 200ms;
+    -ms-transition: all 400ms 200ms;
+    -o-transition: all 400ms 200ms;
+  }
+  .all-lists .menu-icon {
+    left: calc(100% + 20px);
+  }
+  .all-lists.active .menu-icon {
+    left: calc(100% - 40px);
+  }
+}
+.todo-list {
+  flex: 1;
+  color: var(--clr-dark);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--clr-light);
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.list-header {
+  background-color: #e4e4e4;
+  width: 100%;
+  padding: 20px;
+  gap: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px 5px 0 0;
+}
+@media (max-width: 480px) {
+  .list-header {
+    flex-direction: column;
+  }
+}
+
+.list-title {
+  font-weight: 900;
+  text-transform: capitalize;
+}
+.task-count {
+  font-size: 14px;
+}
+.list-body {
+  padding: 20px;
+  position: relative;
+}
+.tasks {
+  margin-bottom: 40px;
+}
+.tasks .task {
+  padding: 10px 0;
+  margin: 5px 0;
+  border-bottom: 1px solid #e4e4e4;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+}
+.task .custom-checkbox {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--clr-primary);
+  background-color: white;
+  transition: all 0.3s;
+  position: relative;
+}
+/* .task .custom-checkbox::before {
+  content: "";
+  position: absolute;
+  background-color: var(--clr-primary);
+  width: 0%;
+  height: 0%;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s;
+} */
+.task input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+/* .task input[type="checkbox"]:checked + .custom-checkbox::before {
+  width: 80%;
+  height: 80%;
+} */
+.task input[type="checkbox"]:checked + .custom-checkbox {
+  box-shadow: inset 0px 0px 0 2px var(--clr-light);
+  background: var(--clr-primary);
+}
+.task label {
+  /* flex: 1; */
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.task label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  height: 2px;
+  width: 100%;
+  background-color: var(--clr-dark);
+  transition: all 0.3s;
+}
+
+.task input[type="checkbox"]:checked ~ label::before {
+  left: 0;
+}
+.task input[type="checkbox"]:checked ~ label {
+  opacity: 0.6;
+}
+.list-body div.delete {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 10px;
+  width: calc(100% - 20px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn.delete {
+  color: var(--clr-light);
+}
+.btn.delete:hover {
+  opacity: 1;
+  color: var(--clr-warning);
+}
